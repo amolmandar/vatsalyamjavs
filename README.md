@@ -1,2 +1,2 @@
 # vatsalyamjavs
-repository for www.vatsalyamjavs.org
+repository for vatsalyamjavs
