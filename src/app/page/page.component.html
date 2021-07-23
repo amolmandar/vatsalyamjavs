@@ -1,0 +1,150 @@
+
+<!--
+<p>page works!</p>
+
+ app/page/page.component.html -->
+<img class="fullBg" [src]="page.image">
+
+<div class="t" fxLayout.xs="column" fxLayoutGap.xs="20px">
+    
+    <mat-card class="flex-container" fxFlex="25%" >
+        <mat-card-header>
+            <mat-card-title>
+                <h1>Vatsalyam Details</h1>
+            </mat-card-title>
+            <mat-card-subtitle>
+    
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <h3>Yearwise Vatsalyam Summay & Testimonials</h3>
+            <ul class="nav nav-pills">
+                <li [class.active]="viewMode=='2015'"  class="nav-link active">
+                    <a  (click)="viewMode='2015'">2015</a>
+                </li>
+                <li [class.active]="viewMode=='2017'"  class="nav-link">
+                    <a  (click)="viewMode='2017'">2017</a>
+                </li>
+                <li [class.active]="viewMode=='2019'"  class="nav-link">
+                    <a  (click)="viewMode='2019'">2019</a>
+                </li>
+                <li [class.active]="viewMode=='2021'"  class="nav-link">
+                    <a  (click)="viewMode='2021'">2021</a>
+                </li>
+            </ul>
+            <div [ngSwitch]="viewMode">
+                  <div *ngSwitchCase="'2015'">
+                      2015 Contents
+                      
+                      <vatsalyam-year-data year='2015'></vatsalyam-year-data>
+                     
+                  </div>
+                  <div *ngSwitchCase="'2017'">
+                      2017 view Contents
+                      <vatsalyam-year-data year='2017'></vatsalyam-year-data>
+                  </div>
+                  <div *ngSwitchCase="'2019'">
+                      2019 view Contents
+                      <vatsalyam-year-data year='2019'></vatsalyam-year-data>
+                  </div>
+                  <div *ngSwitchCase="'2021'">
+                      2021 view Contents
+                      <vatsalyam-year-data year='2021'></vatsalyam-year-data>
+
+                  </div>
+                  <div *ngSwitchDefault>Other Contents</div>
+              </div>
+        </mat-card-content>
+    
+    </mat-card>
+    
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>
+            <h1>{{page.title}}</h1>
+            <img class="thumbnail" [src]="page.image">
+        </mat-card-title>
+        <mat-card-subtitle><h3><span class="subtitle">{{page.subtitle}}</span></h3></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngIf="page.id!='123'">
+           <div *ngFor="let ele of page.content;" > {{ele|slice:0:limit}}
+        <!--
+                <div *ngIf="moreOrLess==true;">  
+                        <a   [routerLink]="['homemore']" 
+                
+                        routerLinkActive="active" > 
+                    <button (click)="chg();">See {{moreOrLess ? 'Moree....' : 'Less'}}</button>
+                        
+                        </a> 
+                
+                </div>  
+                <div *ngIf="!moreOrLess">  
+                    <a  [routerLink]="['home']" 
+                    routerLinkActive="active"> <button (click)="chg();" >See Less....</button></a> 
+                </div> 
+        -->  
+                <button *ngIf ="limit < 150" (click)="showMoreContents()">
+                        Show More
+                </button>
+                <button *ngIf ="limit > 150" (click)="showLessContents()">
+                        Show Less
+                </button>
+
+            </div>
+        </div>
+        <div *ngIf="page.id=='123' && page.title=='Login'">
+              
+                <loginform></loginform>
+        </div>
+        <div  *ngIf="page.id=='123' && page.title!='Login'">  
+            <table><tr><th>Acct Name:</th><th>Jangoraitad Adivasi Vikas Sanstha</th></tr></table>
+            <ul>
+                
+                    <li>
+                        <span>Bank Name:</span>
+                        <span class="bnk">{{page.content.sbi.Bank}}</span>
+                    </li>
+                    <li>
+                        <span>Account No:</span>
+                        <span class="bnk">{{page.content.sbi.Acct}}</span>
+                    </li>
+                    <li>
+                        <span>IFS Code:</span>
+                        <span class="bnk">{{page.content.sbi.IFSC}}</span>
+                    </li>
+                    <div>-------</div>
+                    <li>
+                        <span>Bank Name:</span>
+                        <span class="bnk">{{page.content.axis.Bank}}</span>
+                    </li>
+                    <li>
+                        <span>Account No:</span>
+                        <span class="bnk">{{page.content.axis.Acct}}</span>
+                    </li>
+                    <li>
+                        <span>IFS Code:</span>
+                        <span class="bnk">{{page.content.axis.IFSC}}</span>
+                    </li>
+                    <div>------</div>
+                    <li>
+                        <span>Bank Name:</span>
+                        <span class="bnk">{{page.content.rbl.Bank}}</span>
+                    </li>
+                    <li>
+                        <span>Account No:</span>
+                        <span class="bnk">{{page.content.rbl.Acct}}</span>
+                    </li>
+                    <li>
+                        <span>IFS Code:</span>
+                        <span class="bnk">{{page.content.rbl.IFSC}}</span>
+                    </li>
+            
+            </ul>
+        </div>
+    </mat-card-content>
+</mat-card>
+</div>
+<!--
+<router-outlet></router-outlet>
+-->

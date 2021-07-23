@@ -1,0 +1,43 @@
+
+
+<table>
+  <tr><th>Name</th><th>Email</th></tr>
+  <tr *ngFor="let r of resData">
+      <td>{{r['name']}} </td>
+      <td>{{r['email']}}</td>
+      <td><button mat-raised-button color="primary" (click)="getout()">Logout</button></td>
+    </tr>
+</table> 
+<div class="example-container" *ngIf="!len">
+    <div class="form-container">
+      <form [formGroup]="loginForm" (submit)="submit()">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> E-mail
+          </mat-label>
+          <input matInput formControlName="email" name="em"required>
+          <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+            <span *ngIf="loginForm.controls.email.errors.required">This field is mandatory.</span>
+            <span *ngIf="loginForm.controls.email.errors.pattern">This field is invalid.</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label> Password
+          </mat-label>
+          <input matInput formControlName="password" type="password">
+          <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+            <span *ngIf="loginForm.controls.password.errors.required">This field is mandatory.</span>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Log In</button>
+      </form>
+    </div>
+  </div>
+  <!-- <div class="pdf-container" *ngIf="len" style="height: 100px;">
+    <ngx-extended-pdf-viewer [src]="'assets/sagarsahil.pdf'" 
+      [useBrowserLocale]="true" 
+      height="90vh" [textLayer]="true" 
+      [showHandToolButton]="true" 
+      [zoom]= 50>
+    </ngx-extended-pdf-viewer>
+  </div> -->
+

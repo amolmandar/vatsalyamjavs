@@ -1,0 +1,25 @@
+<!---->
+<mat-toolbar color="accent">
+
+    <span class="light">Vatsalyam</span>
+    <p></p>
+<span class="spacer"></span>
+<button mat-button >
+        <a [routerLink]="['home']" routerLinkActive="active">HOME</a>
+</button>
+<button mat-button >
+        <a [routerLink]="['login']" routerLinkActive="active">LOGIN</a>
+</button>
+<button mat-button >
+        <a [routerLink]="['about']" routerLinkActive="active">ABOUT</a>
+</button>
+<button mat-button>
+        <a [routerLink]="['contact']" routerLinkActive="active">CONTACT</a>
+</button>
+<button mat-button >
+        <a [routerLink]="['donate']" routerLinkActive="active">DONATE</a>
+</button>
+
+</mat-toolbar>
+<!--<app-page></app-page>-->
+<router-outlet></router-outlet>
